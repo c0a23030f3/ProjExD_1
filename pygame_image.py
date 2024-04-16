@@ -19,20 +19,21 @@ def main():
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-        
+        kx = -1
+        ky = 0
         key_lst = pg.key.get_pressed() #練習8-3
-        print(key_lst)
-        kk_rct.move_ip((-1, 0)) #演習1
+        # print(key_lst)
+         #演習1
         if key_lst[pg.K_UP]:
-            kk_rct.move_ip((0, -1))
+            ky -= 1
         if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip((0, 1))
+            ky += 1
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip((2, 0))
+            kx += 2
         if key_lst[pg.K_LEFT]:
-            kk_rct.move_ip((-1, 0))
-        if key_lst == False:
-            kk_rct.move_ip((-x, 0))
+            kx -= 1
+        kk_rct.move_ip((kx, ky))
+        
 
         x = tmr % 3200 #練習6
         screen.blit(bg_img, [-x, 0]) #練習6
